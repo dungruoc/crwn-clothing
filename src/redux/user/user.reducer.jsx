@@ -1,4 +1,4 @@
-import { USER_SET_CURRENT_USER } from './user.actions';
+import { UserActionTypes } from './user.actions';
 
 const INITIAL_STATE = {
   currentUser: null
@@ -12,7 +12,7 @@ const setCurrentUser = (state, payload) => {
 }
 
 const funcMap = new Map();
-funcMap.set(USER_SET_CURRENT_USER, setCurrentUser);
+funcMap.set(UserActionTypes.SET_CURRENT_USER, setCurrentUser);
 
 const userReducer = (state = INITIAL_STATE, action) => {
   return funcMap.has(action.type) ?
