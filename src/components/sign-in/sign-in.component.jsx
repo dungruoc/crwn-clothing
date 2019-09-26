@@ -26,8 +26,8 @@ class SignIn extends React.Component {
   render() {
     return (
       <div className="sign-in">
-        <h2>I have already an account</h2>
-        <span className="title">Sign in with your email and password</span>
+        <h2 className="title">I have already an account</h2>
+        <span>Sign in with your email and password</span>
         <form onSubmit={this.handleSubmit}>
           <FormInput
             label="Email"
