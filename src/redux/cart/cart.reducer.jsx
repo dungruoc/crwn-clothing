@@ -1,10 +1,5 @@
 import { CartActionTypes } from './cart.actions';
-import { addItemToCart } from './cart.utils';
-
-const INITIAL_STATE = {
-  hidden: true,
-  cartItems: []
-};
+import { addItemToCart, INITIAL_STATE } from './cart.utils';
 
 const toggleCartHidden = (state, payload) => ({
   ...state,
