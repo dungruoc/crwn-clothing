@@ -16,8 +16,7 @@ funcMap.set(UserActionTypes.SET_CURRENT_USER, setCurrentUser);
 
 const userReducer = (state = INITIAL_STATE, action) => {
   return funcMap.has(action.type) ?
-    funcMap.get(action.type)(state, action.payload)
-    :
+    funcMap.get(action.type)(state, action.payload) :
     state;
 }
 
