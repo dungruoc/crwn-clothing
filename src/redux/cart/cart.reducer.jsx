@@ -1,5 +1,5 @@
 import { CartActionTypes } from './cart.actions';
-import { addItemToCart, INITIAL_STATE } from './cart.utils';
+import { addItemToCart, INITIAL_STATE, clearItemFromCart, decreaseItemNumber } from './cart.utils';
 
 const toggleCartHidden = (state, payload) => ({
   ...state,
@@ -11,9 +11,21 @@ const addCartItem = (state, payload) => ({
   cartItems: addItemToCart(state.cartItems, payload)
 })
 
+const clearCartItem = (state, payload) =>({
+  ...state,
+  cartItems: clearItemFromCart(state.cartItems, payload)
+})
+
+const removeCartItem = (state, payload) => ({
+  ...state,
+  cartItems: decreaseItemNumber(state.cartItems, payload)
+})
+
 const funcMap = new Map();
 funcMap.set(CartActionTypes.TOGGLE_CART_HIDDEN, toggleCartHidden);
 funcMap.set(CartActionTypes.ADD_ITEM, addCartItem);
+funcMap.set(CartActionTypes.CLEAR_ITEM, clearCartItem);
+funcMap.set(CartActionTypes.REMOVE_ITEM, removeCartItem);
 
 const cartReducer = (state = INITIAL_STATE, action) => {
   return funcMap.has(action.type) ?

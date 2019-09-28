@@ -6,7 +6,7 @@ import './collection-item.styles.scss';
 import CustomButton from '../custom-button/custom-button.component';
 import { addCartItemAction } from '../../redux/cart/cart.actions';
 
-const CollectionItem = ({ item, addCartItem }) => {
+const CollectionItem = ({ item, addCartItem}) => {
   const {name, price, imageUrl } = item;
   return (
     <div className="collection-item">
@@ -22,7 +22,6 @@ const CollectionItem = ({ item, addCartItem }) => {
       </div>
     </div>
   );
-
 }
 
 const mapDispatchToProps = dispatch => ({

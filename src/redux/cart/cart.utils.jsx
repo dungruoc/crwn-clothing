@@ -24,3 +24,32 @@ export const addItemToCart = (cartItems, itemToAdd) => {
     }
   };
 }
+
+export const clearItemFromCart = (cartItems, id) => {
+  const isExisting = id in cartItems;
+  if (isExisting) {
+    const temp = {...cartItems};
+    delete temp[id];
+    return temp;
+  }
+
+  return cartItems;
+}
+
+export const decreaseItemNumber = (cartItems, id) => {
+  const isExisting = id in cartItems;
+  if (isExisting) {
+    if (cartItems[id].quantity == 1) {
+      return clearItemFromCart(cartItems, id);
+    }
+    return {
+      ...cartItems,
+      [id]: {
+        ...cartItems[id],
+        quantity: cartItems[id].quantity - 1
+      }
+    };
+  }
+
+  return cartItems;  
+}
