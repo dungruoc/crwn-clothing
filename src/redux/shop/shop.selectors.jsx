@@ -6,3 +6,13 @@ export const selectShopCollections = createSelector(
   [selectShop],
   shop => shop.collections
 )
+
+export const selectCollectionsForPreview = createSelector(
+  [selectShopCollections],
+  collections => Object.keys(collections).map(key => collections[key])
+)
+
+export const selectCollection = path => createSelector(
+  [selectShopCollections],
+  collections => collections[path]
+)
