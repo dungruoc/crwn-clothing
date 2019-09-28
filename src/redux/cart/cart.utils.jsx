@@ -39,7 +39,7 @@ export const clearItemFromCart = (cartItems, id) => {
 export const decreaseItemNumber = (cartItems, id) => {
   const isExisting = id in cartItems;
   if (isExisting) {
-    if (cartItems[id].quantity == 1) {
+    if (cartItems[id].quantity === 1) {
       return clearItemFromCart(cartItems, id);
     }
     return {
