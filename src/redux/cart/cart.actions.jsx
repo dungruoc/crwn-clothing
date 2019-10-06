@@ -22,4 +22,4 @@ export const clearCartItemIdAction = id => ({
 export const removeCartItemAction = id => ({
   type: CartActionTypes.REMOVE_ITEM,
   payload: id
-})
+});

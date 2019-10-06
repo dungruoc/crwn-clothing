@@ -1,18 +1,32 @@
 import { ShopActionTypes } from "./shop.actions";
 
 const INITIAL_STATE = {
-  collections: null
+  collections: null,
+  isFetching: false,
+  errorMessage: undefined
 }
 
-const updateCollections = (state, payload) => {
-  return {
-    ...state,
-    collections: payload
-  }
-}
+const startFetchingCollections = (state, payload) => ({
+  ...state,
+  isFetching: true
+});
+
+const updateCollections = (state, payload) => ({
+  ...state,
+  isFetching: false,
+  collections: payload
+});
+
+const failFetchingCollections = (state, payload) => ({
+  ...state,
+  isFetching: false,
+  errorMessage: payload
+})
 
 const funcMap = new Map();
-funcMap.set(ShopActionTypes.UPDATE_COLLECTIONS, updateCollections);
+funcMap.set(ShopActionTypes.FETCH_COLLECTIONS_START, startFetchingCollections);
+funcMap.set(ShopActionTypes.FETCH_COLLECTIONS_SUCCESS, updateCollections);
+funcMap.set(ShopActionTypes.FETCH_COLLECTIONS_FAILURE, failFetchingCollections);
 
 
 const shopReducer = (state = INITIAL_STATE, action) => {
