@@ -1,18 +1,30 @@
 import { UserActionTypes } from './user.actions';
 
 const INITIAL_STATE = {
-  currentUser: null
+  currentUser: null,
+  errorMessage: null
 };
 
-const setCurrentUser = (state, payload) => {
+const signInSuccess = (state, payload) => {
   return {
     ...state,
-    currentUser: payload
+    currentUser: payload,
+    errorMessage: null
   }
 }
 
+const signInFailure = (state, payload) => {
+  return {
+    ...state,
+    currentUser: null,
+    errorMessage: payload
+  }
+}
+
+
 const funcMap = new Map();
-funcMap.set(UserActionTypes.SET_CURRENT_USER, setCurrentUser);
+funcMap.set(UserActionTypes.SIGN_IN_SUCCESS, signInSuccess);
+funcMap.set(UserActionTypes.SIGN_IN_FAILURE, signInFailure);
 
 const userReducer = (state = INITIAL_STATE, action) => {
   return funcMap.has(action.type) ?
