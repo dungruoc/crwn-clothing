@@ -21,10 +21,26 @@ const signInFailure = (state, payload) => {
   }
 }
 
+const signOutSuccess = (state, payload) => {
+  return {
+    ...state,
+    currentUser: null,
+    errorMessage: null
+  }
+}
+
+const signOutFailure = (state, payload) => {
+  return {
+    ...state,
+    errorMessage: payload
+  }
+}
 
 const funcMap = new Map();
 funcMap.set(UserActionTypes.SIGN_IN_SUCCESS, signInSuccess);
 funcMap.set(UserActionTypes.SIGN_IN_FAILURE, signInFailure);
+funcMap.set(UserActionTypes.SIGN_OUT_SUCCESS, signOutSuccess);
+funcMap.set(UserActionTypes.SIGN_OUT_FAILURE, signOutFailure);
 
 const userReducer = (state = INITIAL_STATE, action) => {
   return funcMap.has(action.type) ?
