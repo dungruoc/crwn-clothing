@@ -36,11 +36,19 @@ const signOutFailure = (state, payload) => {
   }
 }
 
+const signUpFailure = (state, payload) => {
+  return {
+    ...state,
+    errorMessage: payload
+  }
+}
+
 const funcMap = new Map();
 funcMap.set(UserActionTypes.SIGN_IN_SUCCESS, signInSuccess);
 funcMap.set(UserActionTypes.SIGN_IN_FAILURE, signInFailure);
 funcMap.set(UserActionTypes.SIGN_OUT_SUCCESS, signOutSuccess);
 funcMap.set(UserActionTypes.SIGN_OUT_FAILURE, signOutFailure);
+funcMap.set(UserActionTypes.SIGN_UP_FAILURE, signUpFailure);
 
 const userReducer = (state = INITIAL_STATE, action) => {
   return funcMap.has(action.type) ?

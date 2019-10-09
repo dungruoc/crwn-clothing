@@ -6,7 +6,10 @@ export const UserActionTypes = {
   CHECK_USER_SESSION: 'CHECK_USER_SESSION',
   SIGN_OUT_START: 'SIGN_OUT_START',
   SIGN_OUT_SUCCESS: 'SIGN_OUT_SUCCESS',
-  SIGN_OUT_FAILURE: 'SIGN_OUT_FAILURE'
+  SIGN_OUT_FAILURE: 'SIGN_OUT_FAILURE',
+  SIGN_UP_START: 'SIGN_UP_START',
+  SIGN_UP_SUCCESS: 'SIGN_UP_SUCCESS',
+  SIGN_UP_FAILURE: 'SIGN_UP_FAILURE',
 }
 
 export const googleSignInStartAction = () => ({
@@ -15,7 +18,7 @@ export const googleSignInStartAction = () => ({
 
 export const emailSignInStartAction = ({ email, password }) => ({
   type: UserActionTypes.EMAIL_SIGN_IN_START,
-  payload: { email: email, password: password }
+  payload: { email, password }
 });
 
 export const signInSuccessAction = (user) => ({
@@ -40,6 +43,23 @@ export const signOutSuccessAction = () => ({
   type: UserActionTypes.SIGN_OUT_SUCCESS
 });
 
-export const signOutFailureAction = () => ({
-  type: UserActionTypes.SIGN_OUT_FAILURE
+export const signOutFailureAction = (errorMessage) => ({
+  type: UserActionTypes.SIGN_OUT_FAILURE,
+  payload: errorMessage
 });
+
+export const signUpStartAction = (userDetails) => ({
+  type: UserActionTypes.SIGN_UP_START,
+  payload: userDetails
+});
+
+export const signUpSuccessAction = ({ user, additionalData }) => ({
+  type: UserActionTypes.SIGN_UP_SUCCESS,
+  payload: { user, additionalData }
+});
+
+export const signUpFailureAction = (errorMessage) => ({
+  type: UserActionTypes.SIGN_UP_FAILURE,
+  payload: errorMessage
+});
+

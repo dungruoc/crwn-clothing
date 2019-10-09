@@ -21,11 +21,17 @@ const removeCartItem = (state, payload) => ({
   cartItems: decreaseItemNumber(state.cartItems, payload)
 })
 
+const clearAllItems = (state, payload) =>({
+  ...state,
+  cartItems: {}
+})
+
 const funcMap = new Map();
 funcMap.set(CartActionTypes.TOGGLE_CART_HIDDEN, toggleCartHidden);
 funcMap.set(CartActionTypes.ADD_ITEM, addCartItem);
 funcMap.set(CartActionTypes.CLEAR_ITEM, clearCartItem);
 funcMap.set(CartActionTypes.REMOVE_ITEM, removeCartItem);
+funcMap.set(CartActionTypes.CLEAR_CART, clearAllItems);
 
 const cartReducer = (state = INITIAL_STATE, action) => {
   return funcMap.has(action.type) ?
